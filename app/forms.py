@@ -48,3 +48,22 @@ class Change(forms.ModelForm):
             raise forms.ValidationError('Unmatching passwords!')
         
         return cleaned_data
+
+
+class Login(forms.Form):
+    username = forms.CharField(label="Username")
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+
+        if not User.objects.filter(username=username).exists():
+            raise ValidationError("Пользователь с таким именем не существует.")
+        
+        return cleaned_data
+    
+class NameForm(forms.Form):
+    your_name = forms.CharField(label="Your name", max_length=100)
