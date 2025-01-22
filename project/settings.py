@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://bazistesthost-production-07d9.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://bazistesthost-production-07d9.up.railway.app']
 
 # Application definition
 
