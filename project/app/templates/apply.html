@@ -1,0 +1,21 @@
+{% block content %}
+    {% if your_name %}
+        Welcome, guest {{ your_name }}
+    {% endif %}
+
+    {% if user_prof %}
+        Welcome, auntificated {{ user_prof.get_username}}
+        
+    <h1>With you:</h1>
+    {% for user in users %}
+            {% if user.get_username != 'sda' %}
+            <p><b>{{ user.get_username }}</b> 
+            {% if user.get_username != user_prof.get_username %} 
+            <a href='{% url "change_user_data" user_prof.get_username user.get_username %}'>Change data</a>
+            <a href='{% url "delete_user" user_prof.get_username user.get_username %}'>Delete</a>
+            {% endif %}</p>
+            {% endif %}
+    {% endfor %} 
+    {% endif %}
+    <a href = {% url 'add' user_prof.get_username%}>Add user</a>
+{% endblock %}
