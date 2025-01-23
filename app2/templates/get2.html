@@ -1,0 +1,7 @@
+{% block content%}
+    <h1>GET2 ENDPOINT</h1>
+    <form action = '{%url "post1"%}' method ='post'>
+        {% csrf_token %}
+        <input type='submit' value='POST'/>
+    </form>
+{% endblock %}
